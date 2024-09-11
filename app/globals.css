@@ -7,21 +7,169 @@
   --foreground: #171717;
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+*/
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+section {
+  width: 90%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  width: 90%;
+  display: block;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 768px) {
+  section {
+    width: 60%;
+  }
+  
+  footer {
+    width: 60%;
+  }
+}
+
+.page h2, h3 {
+  color: #000;
+  white-space: nowrap;
+  text-wrap: balance;
+  text-align: left;
+}
+
+.page h2 {
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+
+.page h3 {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .page h2 {
+    font-size: 60px;
+    line-height: 64px;
+    letter-spacing: -.02em;
+    font-weight: 700;
+  }
+
+  .page h3 {
+    font-size: 42px;
+    line-height: 64px;
+    letter-spacing: -.02em;
+    font-weight: 700;
+  }
+}
+
+.page a {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+  padding: 0 0 .1em;
+  transition: color .3s ease;
+}
+
+footer a svg:hover {
+  fill: rgb(96, 153, 26);
+}
+
+.page h3 a:after, .page h3 a:before {
+  content: "";
+  position: absolute;
+  background-color: #222;
+  z-index: -1;
+  height: 2px;
+}
+
+.page h3  a:before {
+  width: 0;
+  left: 0;
+  bottom: 0;
+  transition: width .4s ease;
+}
+
+.page h3 a:after {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: all .6s ease;
+}
+
+.page h3  a:hover {
+  color: rgb(96, 153, 26);
+}
+
+.page h3 a:hover:before {
+  width: 100%;
+  background: rgb(96, 153, 26);
+}
+
+.page h3 a:hover:after {
+  left: 100%;
+  width: 0;
+  background: linear-gradient(270deg, rgb(96, 153, 26), #ff007f);
+  transition: all .2s ease;
+}
+
+.page:before {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(270deg, rgb(96, 153, 26), #ff007f, #000);
+  background-size: 600% 600%;
+  animation: AnimationName 30s ease infinite;
+}
+
+@media (min-width: 1024px) {
+  .page  a:after, .page  a:before {
+      height: 4px;
+  }
+}
+
+
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }

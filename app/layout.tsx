@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
+
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,8 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script src="https://kit.fontawesome.com/0ead1130ec.js" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full max-h-full`}
       >
         {children}
       </body>
