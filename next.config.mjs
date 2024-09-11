@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: "/",
+    basePath: "/2024",
     output: 'export',
     reactStrictMode: true,
 };
